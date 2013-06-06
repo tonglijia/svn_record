@@ -1,0 +1,18 @@
+div.nosidebar#main
+  div#content
+    div.contextual
+      h2 = menu_node(params[:path])
+      p
+        = link_to '显示/隐藏代码', "", class: 'toggle_code'
+      div.autoscroll
+        table.filecontent.syntaxhl
+          tbody
+           - line_num = 1 
+           - syntax_highlight_lines(params[:path], Svn::CodesetUtil.to_utf8_by_setting(@content)).each do |line|
+              tr
+                th.line-num id="L#{line_num}"
+                  a href="#L#{line_num}"  = line_num 
+                td.line-code
+                  pre = line.html_safe
+              - line_num += 1
+    = render(partial: "/svn_record/repository/changes/changesets_list", locals: {changesets: @changesets, path:@path })

@@ -1,0 +1,18 @@
+div.nosidebar#main
+	div#content
+		h2 = "修订#{@changeset.revision}"
+		p
+			span.author
+				= "由#{@changeset.committer} 在 #{distance_of_date_in_words(@changeset.committed_at, Time.now)}  之前添加"
+		p = "#{@changeset.comment}"
+		div#related-issues
+			h3 相关的文件
+			ul#changes-legend
+				li.change.change-A 已添加
+				li.change.change-M 已修改
+				li.change.change-C 已复制
+				li.change.change-R 已重命名
+				li.change.change-D 已删除
+			div.changeset-changes
+				= render_changeset_changes
+	    div style="clear:both;"

@@ -1,0 +1,34 @@
+div#main.nosidebar
+	div#content
+		h2 = menu_node(@path)
+		table.list.entries#browser
+		  thead
+		    tr#root
+		      th 名称
+		      th 大小
+		      th 修订
+		      th 提交时间
+		      th 作者
+		      th 注释
+		  tbody
+		    - @entries.each do |element|
+		      tr.entry.dir
+		        td.filename style="padding-left: 0px;width:400px"
+		          span.expander
+		            | &nbsp;&nbsp;&nbsp;
+		            = image_tag("svn_record/file_icon/#{element.kind}.png")
+		            - if element.kind.present? && 'dir' == element.kind.to_s.strip
+		              = link_to element.name, repository_changes_path(path: element.path)
+		            - else
+		              = link_to element.name, entry_repository_changes_path(path: element.path, rev: element.lastrev.name)
+		        td.size style="width: 100px"
+		          = element.size ? number_to_human_size(element.size) : ""
+		        td.revision
+		          = link_to element.lastrev.name, revisions_repository_change_path(element.lastrev.name), title: element.name
+		        td.age style="width: 100px"
+		          = distance_of_date_in_words(element.lastrev.time, Time.now)
+		        td.author
+		          = element.lastrev.author
+		        td.comments
+		          = element.lastrev.message
+    	= render  partial: '/svn_record/repository/changes/changesets_list',  locals:  { changesets: @changesets, path:  @path }

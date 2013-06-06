@@ -1,0 +1,30 @@
+- diff = Svn::UnifiedDiff.new(@diff, type: 'inline', max_lines: 3000, style: "")
+h3 修订:  "#{params[:rev]}:#{params[:rev_to]}"
+h2 = menu_node(params[:path])
+- if diff.blank?
+  p style="text-indet: 2em"
+    | 空
+- diff.each do |table_file|
+  .autoscroll
+    table.filecontent
+      thead
+        tr
+          th.filename colspan="4"
+            = table_file.file_name
+      tbody
+        - table_file.each_line do |spacing, line|
+          - if spacing
+              tr
+                th.line-num
+                  td
+                th.line-num
+                  td
+          tr
+            th.line-num
+              = line.nb_line_left
+            td class="line-code #{line.type_diff_left}"
+              pre = line.html_line_left.html_safe
+            th.line-num
+              = line.nb_line_left
+            td class="line-code #{line.type_diff_right}"
+              pre = line.html_line_right.html_safe

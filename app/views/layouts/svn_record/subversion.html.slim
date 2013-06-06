@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    title SVN版本管理
+    meta name="key_words" content="template languagea"
+    = stylesheet_link_tag "application", media: "all"
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+  body.controller-projects.action-show
+    #wrapper
+      #wrapper2
+        #wrapper3
+          #header
+            h1 SVN版本管理
+            #main-menu
+            ul
+              li = link_to '版本库', repository_changes_path, class: 'overview seelected'
+  	= yield
+    #footer
+     #bgl
+       .bgr
+       Powered by <a href="" target="_blank"> 北京胖子很忙 &copy; 2013-2026

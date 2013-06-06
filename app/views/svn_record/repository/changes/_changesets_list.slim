@@ -1,0 +1,29 @@
+h2 最近的修订版本#{link_to ' (查看更多)', list_repository_changes_path(path: @path), id: 'changes_more' if action_name == 'index' && changesets.size > 10 }
+= form_tag(diff_repository_changes_path, method: :get) do
+	table.list.entries#browser
+		thead
+			tr id="root"
+				th 用户ID
+				th 
+				th 修订
+				th 提交时间
+				th 提交人
+				th 注释
+		tbody
+			- line_num = 1
+			- changesets.each_with_index do |ele, index|
+				tr
+					td = ele.user_id
+					td class="radio_span"
+						-if index < changesets.size - 1
+							span class="float-left"
+								= radio_button_tag 'rev', ele.revision, (line_num==1), id: "cb-#{line_num}"
+						- if index >= 1
+							span class="float_right"
+								= radio_button_tag 'rev_to', ele.revision, (line_num==2), id: "cbto-#{line_num}"
+					td class="revision" = link_to ele.revision, revisions_repository_change_path(ele.revision)
+					td class="age" = ele.committed_at
+					td class="author" = ele.committer
+					td class="comments" = ele.comment
+				- line_num +=1
+	= submit_tag('查看差别') if changesets.length > 1

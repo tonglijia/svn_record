@@ -1,0 +1,5 @@
+repository:
+    url: 'svn://localhost/project'
+    root_url: 'svn://localhost'
+    login:   abc
+    password:  'abc'
