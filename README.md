@@ -1,33 +1,33 @@
 
-### 安装
+### Installation
 	
-1.添加Gemfile 文件代码如下
+1.Add Gemfile file code is as follows
 
 		gem 'svn_record'
 		
-2.执行命令 
+2.Execute the command 
 
 	rails g svn_record:install
 	
-3.添加脚本文件	application.js
+3.Add a script file 
 
 	//= require svn_record/change
 	
-4.添加样式文件 application.cs
+4.Add Style File
 
 	*= require svn_record/site
 	
-5.连接svn配置文件
+5.Connect svn configuration file
 	
 	config/configuration.yml
 		
 
-### 访问页面
-	运行后访问地址
+### Connect svn configuration file
+		After running Access Address
 	
 		http://localhost:3000/repository/changes
 		
-### 国际化参考格式
+### International reference format
 
 		datetime:
 		    distance_in_words:
