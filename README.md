@@ -2,13 +2,14 @@
 ### Installation
 	
 1.Add Gemfile file code is as follows
-
+```ruby
 		gem 'svn_record'
-		
+```
 2.Execute the command 
 
+```ruby
 	rails g svn_record:install
-	
+```
 3.Add a script file 
 
 	//= require svn_record/change

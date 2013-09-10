@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version = SvnRecord::VERSION
   s.authors = ["Lijia Tong"]
   s.email = ["wtuyuupe@163.com"]
-  s.homepage = "http://github.com/wtuyuupe/svn_record"
+  s.homepage = "https://github.com/tonglijia/svn_record"
   s.summary = "svn version control program"
   s.description = "Used to manage them in the svn project"
 
