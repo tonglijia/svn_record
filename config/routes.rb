@@ -2,7 +2,7 @@ SvnRecord::Engine.routes.draw do
 	namespace :repository do
 		resources :changes, only: [:index] do
 			collection do
-				get :diff
+			get :diff
 				get :list
 				get :entry
 			end
